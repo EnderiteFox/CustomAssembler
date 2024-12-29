@@ -1,0 +1,7 @@
+addi r1 10
+addi r2 15
+nop
+add r1 r1 r2
+rsh r1 r1
+jmp 0b00 end
+end: halt
