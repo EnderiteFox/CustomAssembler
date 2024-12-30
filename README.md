@@ -77,7 +77,7 @@ The program memory is a ROM with 1024 16-bit instructions
 The ALU has an overflow and a zero-result flag  
 The RAM can store 256 16-bit numbers  
 
-# Assember features
+# Assembler features
 Instruction numbers for the immediate and address instruction types support decimal, binary and hexadecimal numbers  
 Labels are also supported  
 You can also define your own aliases in the program by using `ALIAS /<regex>/ TO /<regex>/`  
