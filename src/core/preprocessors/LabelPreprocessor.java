@@ -1,6 +1,6 @@
-package core;
+package core.preprocessors;
 
-import api.InstructionPreprocessor;
+import api.preprocessors.InstructionPreprocessor;
 import api.OperationTable;
 
 import java.util.ArrayList;

@@ -21,12 +21,12 @@ public class RedstoneOperationTable implements OperationTable {
         registerOp("nor", 6, InstructionType.REGISTER);
         registerOp("xor", 7, InstructionType.REGISTER);
         registerOp("sub", 8, InstructionType.REGISTER);
-        registerOp("jmp", 9, InstructionType.ADDRESSED);
-        registerOp("brh", 10, InstructionType.ADDRESSED);
-        registerOp("cal", 11, InstructionType.ADDRESSED);
+        registerOp("jmp", 9, InstructionType.PROGRAM_ADDRESSED);
+        registerOp("brh", 10, InstructionType.PROGRAM_ADDRESSED);
+        registerOp("cal", 11, InstructionType.PROGRAM_ADDRESSED);
         registerOp("ret", 12, InstructionType.ZERO);
-        registerOp("lod", 13, InstructionType.IMMEDIATE);
-        registerOp("wri", 14, InstructionType.IMMEDIATE);
+        registerOp("lod", 13, InstructionType.MEMORY_ADDRESSED);
+        registerOp("wri", 14, InstructionType.MEMORY_ADDRESSED);
     }
 
     @Override

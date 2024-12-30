@@ -22,7 +22,8 @@ public class RedstoneAssembler implements Assembler {
         readerMap.put(InstructionType.REDUCED_REGISTER, new ReducedRegisterInstructionReader(operationTable));
         readerMap.put(InstructionType.IMMEDIATE, new ImmediateInstructionReader(operationTable));
         readerMap.put(InstructionType.ZERO, new ZeroInstructionReader(operationTable));
-        readerMap.put(InstructionType.ADDRESSED, new AddressedInstructionReader(operationTable));
+        readerMap.put(InstructionType.PROGRAM_ADDRESSED, new ProgramAddressedInstructionReader(operationTable));
+        readerMap.put(InstructionType.MEMORY_ADDRESSED, new MemoryAddressedInstructionReader(operationTable));
     }
 
     @Override

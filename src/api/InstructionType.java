@@ -5,5 +5,6 @@ public enum InstructionType {
     REGISTER,
     IMMEDIATE,
     REDUCED_REGISTER,
-    ADDRESSED
+    PROGRAM_ADDRESSED,
+    MEMORY_ADDRESSED
 }

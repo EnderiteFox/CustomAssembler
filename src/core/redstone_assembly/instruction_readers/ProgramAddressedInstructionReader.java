@@ -2,8 +2,8 @@ package core.redstone_assembly.instruction_readers;
 
 import api.OperationTable;
 
-public class AddressedInstructionReader extends AbstractInstructionReader {
-    public AddressedInstructionReader(OperationTable operationTable) {
+public class ProgramAddressedInstructionReader extends AbstractInstructionReader {
+    public ProgramAddressedInstructionReader(OperationTable operationTable) {
         super(operationTable, "^[a-zA-Z]+( 0b[01]{2})? ([0-9]+|0b[01]{1,10}|0x[0-9a-fA-f]{1,3})");
     }
 

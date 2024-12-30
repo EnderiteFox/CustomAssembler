@@ -3,8 +3,11 @@ package core;
 import api.Assembler;
 import api.OperationTable;
 import api.ProgramReader;
+import api.preprocessors.CompoundPreprocessor;
+import core.preprocessors.AssemblyPreprocessor;
 import core.redstone_assembly.RedstoneAssembler;
 import core.redstone_assembly.RedstoneOperationTable;
+import core.redstone_assembly.preprocessors.RedstoneAliasesPreprocessor;
 
 import java.util.List;
 
@@ -18,7 +21,9 @@ public class Main {
         System.out.println();
 
         OperationTable operationTable = new RedstoneOperationTable();
-        program = new LabelPreprocessor(operationTable).preprocessProgram(program);
+        CompoundPreprocessor preprocessor = new AssemblyPreprocessor(operationTable);
+        preprocessor.registerPreprocessor(new RedstoneAliasesPreprocessor(), 1);
+        program = preprocessor.preprocessProgram(program);
 
         System.out.println("Preprocessed program");
         program.forEach(System.out::println);

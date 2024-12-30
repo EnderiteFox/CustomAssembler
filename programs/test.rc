@@ -1,7 +1,13 @@
-addi r1 10
-addi r2 15
+set r1 10
+set r2 15
 nop
 add r1 r1 r2
 rsh r1 r1
 jmp 0b00 end
-end: halt
+end:wri r1 r0 10
+lod r1 r0 10
+lsh r1
+ALIAS /^hello(.*)/ TO /inc$1/
+ALIAS /^inc r([0-9]|1[0-5])$/ TO /addi r$1 1/
+hello r1
+halt
