@@ -1,5 +1,5 @@
 # CustomAssembler
-An assembler for my custom assembly language, which will be used to build a Minecraft processor  
+An assembler and an emulator for my custom assembly language, which will be used to build a Minecraft processor  
 
 # Language specification
 
@@ -75,7 +75,7 @@ Takes two registers and an immediate offset
 The register bank has 15 8-bit registers, and a zero register  
 The program memory is a ROM with 1024 16-bit instructions  
 The ALU has an overflow and a zero-result flag  
-The RAM can store 256 16-bit numbers  
+The RAM can store 256 8-bit numbers  
 
 # Assembler features
 Instruction numbers for the immediate and address instruction types support decimal, binary and hexadecimal numbers  
@@ -86,8 +86,14 @@ Some aliases are predefined for redstone assembly
 
 # Predefined aliases
 
-| From                                                                | To                | Short Description                             | Full Description                                  |
-|---------------------------------------------------------------------|-------------------|-----------------------------------------------|---------------------------------------------------|
-| `/^set r([0-9]\|1[0-5]) ([0-9]+\|0b[01]{1,8}\|0x[0-9a-fA-F]{1,2})$` | `addi r$1 $2`     | set \<reg> \<NUMBER> => addi \<reg> \<NUMBER> | Definition alias                                  |
-| `^lsh r([0-9]\|1[0-5])$`                                            | `add r$1 r$1 r$1` | lsh \<reg> => add \<reg> \<reg> \<reg>        | Left shift using addition (reg + reg == reg << 1) |
+| From                                                               | To                | Short Description                             | Full Description                                  |
+|--------------------------------------------------------------------|-------------------|-----------------------------------------------|---------------------------------------------------|
+| `^set r([0-9]\|1[0-5]) ([0-9]+\|0b[01]{1,8}\|0x[0-9a-fA-F]{1,2})$` | `addi r$1 $2`     | set \<reg> \<NUMBER> => addi \<reg> \<NUMBER> | Definition alias                                  |
+| `^lsh r([0-9]\|1[0-5])$`                                           | `add r$1 r$1 r$1` | lsh \<reg> => add \<reg> \<reg> \<reg>        | Left shift using addition (reg + reg == reg << 1) |
+| `^r([0-9]\|1[0-5])\+\+`                                            | `addi r$1 1`      | \<reg>++ => addi \<reg> 1                     | Shortcut to increment                             |
+| `^r([0-9]\|1[0-5])--`                                              | `addi r$1 -1`     | \<reg>-- => addi \<reg> -1                    | Shortcut to decrement                             |
 
+# Emulator
+
+An emulator executes the machine code and displays the registry bank and the memory after execution
+Currently branching is not implemented in the emulator and will result in an `InternalError`

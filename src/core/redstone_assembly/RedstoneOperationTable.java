@@ -41,6 +41,14 @@ public class RedstoneOperationTable implements OperationTable {
         return Optional.of(operationTable.get(operationName).instructionType());
     }
 
+    @Override
+    public Optional<String> getOperationName(short operationCode) {
+        for (String operation : operationTable.keySet()) {
+            if (operationTable.get(operation).opCode() == operationCode) return Optional.of(operation);
+        }
+        return Optional.empty();
+    }
+
     private void registerOp(String opName, int opCode, InstructionType instructionType) {
         operationTable.put(opName, new InstructionRecord((short) opCode, instructionType));
     }

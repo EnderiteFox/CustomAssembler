@@ -4,7 +4,7 @@ import api.OperationTable;
 
 public class ImmediateInstructionReader extends AbstractInstructionReader {
     public ImmediateInstructionReader(OperationTable operationTable) {
-        super(operationTable, "^[a-zA-Z]+ r([0-9]|1[0-5]) (-?[0-9]+|0b[01]{1,8}|0x[0-9a-fA-F]{1,2})");
+        super(operationTable, "^[a-zA-Z]+ r(?:[0-9]|1[0-5]) (?:-?[0-9]+|0b[01]{1,8}|0x[0-9a-fA-F]{1,2})$");
     }
 
     @Override

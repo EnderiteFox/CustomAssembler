@@ -21,10 +21,22 @@ public class RedstoneAliasesPreprocessor implements InstructionPreprocessor {
             "^lsh r([0-9]|1[0-5])$",
             "add r$1 r$1 r$1"
         );
+
+        // <reg>++ => addi <reg> 1
+        aliases.put(
+            "^r([0-9]|1[0-5])\\+\\+$",
+            "addi r$1 1"
+        );
+
+        // <reg>-- => addi <reg> -1
+        aliases.put(
+            "^r([0-9]|1[0-5])--$",
+            "addi r$1 -1"
+        );
     }
 
     @Override
-    public List<String> preprocessProgram(List<String> program) {
+    public List<String> preprocessProgram(List<String> program) throws IllegalArgumentException {
         return program.stream().map(
             line -> {
                 if (line.startsWith("//")) return line;

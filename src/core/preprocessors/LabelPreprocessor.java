@@ -16,7 +16,7 @@ public class LabelPreprocessor implements InstructionPreprocessor {
     }
 
     @Override
-    public List<String> preprocessProgram(List<String> program) {
+    public List<String> preprocessProgram(List<String> program) throws IllegalArgumentException {
         List<String> processedProgram = new ArrayList<>();
 
         Map<String, Integer> labelMap = new HashMap<>();
@@ -25,7 +25,9 @@ public class LabelPreprocessor implements InstructionPreprocessor {
             if (programLine.isBlank() || programLine.startsWith("//")) continue;
             if (programLine.matches("^[a-zA-Z0-9]+:.*$")) {
                 String label = programLine.split(":")[0];
-                if (operationTable.getOperationCode(label).isPresent()) continue;
+                if (operationTable.getOperationCode(label).isPresent()) throw new IllegalArgumentException(
+                    "Can't name label " + label + " as it is an assembler operation"
+                );
                 labelMap.put(label, line);
             }
             processedProgram.add(programLine.replaceAll("^[a-zA-Z0-9]+: *", ""));

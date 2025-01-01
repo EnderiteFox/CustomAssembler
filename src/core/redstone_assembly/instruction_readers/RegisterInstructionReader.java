@@ -4,7 +4,7 @@ import api.OperationTable;
 
 public class RegisterInstructionReader extends AbstractInstructionReader {
     public RegisterInstructionReader(OperationTable operationTable) {
-        super(operationTable, "^[a-zA-Z]+( r([0-9]|1[0-5])){3}$");
+        super(operationTable, "^[a-zA-Z]+(?: r(?:[0-9]|1[0-5])){3}$");
     }
 
     @Override
