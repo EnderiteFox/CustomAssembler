@@ -24,8 +24,10 @@ An assembler and an emulator for my custom assembly language, which will be used
 
 # Instruction types
 
-Instruction types are mainly handled by the assembler and do nothing once the program has been assembled  
-There are 5 instruction types:
+There are multiple formats for the instructions, as different instructions need different arguments.  
+The assembler takes instruction types into account, and arguments that would always be zero can simply be omitted, and the assembler will set them to zero.  
+Additionnaly, for the Program Addressed instruction type, the condition argument can be omitted, and will be set to zero.  
+There are 5 instruction types:  
 
 ### Register
 Takes 3 registers
@@ -72,10 +74,10 @@ Takes two registers and an immediate offset
 
 # Hardware specifications
 
-The register bank has 15 8-bit registers, and a zero register  
-The program memory is a ROM with 1024 16-bit instructions  
-The ALU has an overflow and a zero-result flag  
-The RAM can store 256 8-bit numbers  
+The register bank has 15 8-bit registers, and a zero register.  
+The program memory is a ROM with 1024 16-bit instructions.  
+The ALU has an overflow and a zero-result flag (respectively on the first and second bit). Every instruction that make use of the ALU are setting the ALU flags accordingly.  
+The RAM can store 256 8-bit numbers.  
 
 # Assembler features
 Instruction numbers for the immediate and address instruction types support decimal, binary and hexadecimal numbers  
@@ -95,5 +97,4 @@ Some aliases are predefined for redstone assembly
 
 # Emulator
 
-An emulator executes the machine code and displays the registry bank and the memory after execution
-Currently branching is not implemented in the emulator and will result in an `InternalError`
+An emulator executes the machine code and displays the registry bank and the memory after execution  

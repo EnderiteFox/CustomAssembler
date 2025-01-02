@@ -17,11 +17,17 @@ public class LabelPreprocessor implements InstructionPreprocessor {
 
     @Override
     public List<String> preprocessProgram(List<String> program) throws IllegalArgumentException {
+        List<String> cleanedProgram = new ArrayList<>();
         List<String> processedProgram = new ArrayList<>();
 
+        for (String line : program) {
+            if (line.isBlank() || line.startsWith("//")) continue;
+            cleanedProgram.add(line);
+        }
+
         Map<String, Integer> labelMap = new HashMap<>();
-        for (int line = 0; line < program.size(); ++line) {
-            String programLine = program.get(line).trim();
+        for (int line = 0; line < cleanedProgram.size(); ++line) {
+            String programLine = cleanedProgram.get(line).trim();
             if (programLine.isBlank() || programLine.startsWith("//")) continue;
             if (programLine.matches("^[a-zA-Z0-9]+:.*$")) {
                 String label = programLine.split(":")[0];

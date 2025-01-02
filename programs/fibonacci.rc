@@ -1,28 +1,23 @@
 addi r1 1
 addi r2 2
-addi r15 20
-addi r13 -1
+// Number of iterations here
+addi r15 10
 
-add r14 r0 r15
-addi r14 -1
+r15--
 brh 0b01 endfib1
-
-add r14 r0 r15
-addi r14 -2
+r15--
 brh 0b01 endfib2
 
-addi r14 0
-
 fib:add r3 r1 r2
-add r15 r15 r13
+r15--
 brh 0b01 endr3
 
 add r1 r2 r3
-add r15 r15 r13
+r15--
 brh 0b01 endr1
 
 add r2 r3 r1
-add r15 r15 r13
+r15--
 brh 0b01 endr2
 
 jmp fib
@@ -33,13 +28,12 @@ endr1:add r14 r0 r1
 halt
 endr2:add r14 r0 r2
 halt
-endfib1:addi r0 1
+endfib1:addi r14 1
 halt
-endfib2:addi r0 2
+endfib2:addi r14 2
 halt
 
 // r1: fib(1)
 // r2: fib(2)
 // r15: Iterations
 // r14: Result
-// r13: -1

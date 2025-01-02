@@ -19,6 +19,7 @@ public class RedstoneAssemblyEmulator implements AssemblyLanguageEmulator<Redsto
 
     private int programCounter = 0;
     private final Stack<Short> callStack = new Stack<>();
+    private int flags = 0;
 
     private final int MAX_PROGRAM_LOOP_COUNT = 10;
     private final int MAX_INSTRUCTION_EXECUTION = 1024 * 100;
@@ -39,6 +40,7 @@ public class RedstoneAssemblyEmulator implements AssemblyLanguageEmulator<Redsto
         registerInstructionEmulator(7, new XorEmulator());
         registerInstructionEmulator(8, new SubEmulator());
         registerInstructionEmulator(9, new JmpEmulator());
+        registerInstructionEmulator(10, new BrhEmulator());
         registerInstructionEmulator(11, new CallEmulator());
         registerInstructionEmulator(12, new RetEmulator());
         registerInstructionEmulator(13, new LodEmulator());
@@ -124,5 +126,13 @@ public class RedstoneAssemblyEmulator implements AssemblyLanguageEmulator<Redsto
 
     public void setRam(byte address, byte value) {
         ram.put(address, value);
+    }
+
+    public int getFlags() {
+        return flags;
+    }
+
+    public void setFlags(int flags) {
+        this.flags = flags;
     }
 }
