@@ -1,0 +1,33 @@
+plugins {
+    id 'application'
+}
+
+group 'fr.enderitefox'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+}
+
+dependencies {
+}
+
+application {
+    mainClass = 'fr.enderitefox.redstoneassembler.core.Main'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+}
+
+test {
+    useJUnitPlatform()
+}

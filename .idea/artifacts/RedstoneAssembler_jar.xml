@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="RedstoneAssembler:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/RedstoneAssembler_jar</output-path>
+    <root id="archive" name="RedstoneAssembler.jar">
+      <element id="module-output" name="RedstoneAssembler" />
+    </root>
+  </artifact>
+</component>
