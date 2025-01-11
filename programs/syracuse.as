@@ -1,11 +1,8 @@
-// Initialisation
-set r1 0
-
 // Number of iterations
-set r14 20
+addi r14 20
 
 // First number
-set r15 19
+addi r15 19
 
 wri r15 r1 0
 add r2 r0 r15

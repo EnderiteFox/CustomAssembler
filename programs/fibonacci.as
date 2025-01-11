@@ -1,7 +1,7 @@
 set r15 11
 
 // First 2 terms
-set r1 1
+addi r1 1
 wri r1 r0 0
 add r15 r15 r0
 brh 0b01 end

@@ -11,9 +11,9 @@ public class SubEmulator implements InstructionEmulator<RedstoneAssemblyEmulator
         byte regB = (byte) ((instruction & 0x00F0) >> 4);
         byte regC = (byte) (instruction & 0x000F);
         int sub = emulator.getReg(regB) - emulator.getReg(regC);
-        boolean overflow = sub < -128 || sub > 127;
         boolean zero = (byte) sub == 0;
-        emulator.setFlags(((overflow ? 1 : 0) << 1) | (zero ? 1 : 0));
+        // Because substraction is using overflow, the overflow flag will always be set to true
+        emulator.setFlags(0b10 | (zero ? 1 : 0));
         emulator.setReg(regA, (byte) (emulator.getReg(regB) - emulator.getReg(regC)));
     }
 }
