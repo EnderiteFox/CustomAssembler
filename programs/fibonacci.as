@@ -1,4 +1,4 @@
-set r15 11
+addi r15 11
 
 // First 2 terms
 addi r1 1
